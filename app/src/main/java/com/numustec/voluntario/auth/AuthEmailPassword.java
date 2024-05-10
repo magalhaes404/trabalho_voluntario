@@ -1,6 +1,7 @@
 package com.numustec.voluntario.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,13 +20,17 @@ public class AuthEmailPassword extends AppCompatActivity {
     EditText etEmail,etPass;
     LinearLayout layoutLoading,layoutInput;
     FirebaseAuth mauth;
+    CardView view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_email_password);
         etEmail = (EditText)findViewById(R.id.etEmail);
         etPass  = (EditText)findViewById(R.id.etPassword);
-        layoutLoading = (LinearLayout)findViewById(R.id.layoutLoading);
+        view = (CardView)findViewById(R.id.inLoading);
+        layoutLoading = (LinearLayout)view.findViewById(R.id.layoutLoading);
         layoutInput = (LinearLayout)findViewById(R.id.layoutInput);
         mauth = FirebaseAuth.getInstance();
         layoutLoading.setVisibility(View.GONE);

@@ -10,14 +10,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/pbLoading"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:indeterminateBehavior="repeat"
-            android:indeterminateOnly="true" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15sp"
+            app:srcCompat="@mipmap/ic_logo" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
