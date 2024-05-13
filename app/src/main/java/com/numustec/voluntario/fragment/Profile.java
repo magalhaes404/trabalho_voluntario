@@ -1,14 +1,16 @@
 package com.numustec.voluntario.fragment;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ListView;
 import com.numustec.voluntario.R;
+import com.numustec.voluntario.adapter.ProfileItensAdapter;
+import com.numustec.voluntario.entity.ProfileItem;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,27 +19,11 @@ import com.numustec.voluntario.R;
  */
 public class Profile extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    ListView itens;
     public Profile() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Profile.
-     */
     // TODO: Rename and change types and number of parameters
     public static Profile newInstance() {
         Profile fragment = new Profile();
@@ -50,9 +36,21 @@ public class Profile extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        ListView listView = view.findViewById(R.id.lvProfileItens);
+        ArrayList<ProfileItem> itens = new ArrayList<>();
+        ProfileItem item1 = new ProfileItem();
+        item1.icon = R.mipmap.ic_profile;
+        item1.titulo = getString(R.string.nav_profile);
+        ProfileItem item2 = new ProfileItem();
+        item2.icon = R.mipmap.ic_logout;
+        item2.titulo = getString(R.string.nav_profile);
+
+        itens.add(item1);
+        ProfileItensAdapter adapter = new ProfileItensAdapter(getContext(),itens);
+        listView.setAdapter(adapter);
+
+        return view;
     }
 }

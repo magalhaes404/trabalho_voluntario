@@ -15,5 +15,7 @@
     <string name="nav_post">Meus Trabalhos</string>
     <string name="nav_canditate">Candidaturas</string>
     <string name="register_save">Cadastro salvo com sucesso</string>
-
+    <string name="personal_data">Dados Pessoal</string>
+    <string name="settings">Configuração</string>
+    <string name="logout">Sair</string>
 </resources>
