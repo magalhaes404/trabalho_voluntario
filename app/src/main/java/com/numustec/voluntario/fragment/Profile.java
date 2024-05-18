@@ -1,12 +1,17 @@
 package com.numustec.voluntario.fragment;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.numustec.voluntario.R;
+import com.numustec.voluntario.activity.ProfileActivity;
 import com.numustec.voluntario.adapter.ProfileItensAdapter;
 import com.numustec.voluntario.entity.ProfileItem;
 
@@ -39,18 +44,46 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ListView listView = view.findViewById(R.id.lvProfileItens);
+        // include header
+        View header = inflater.inflate(R.layout.card_header, view.findViewById(R.id.inCardHeader));
+        TextView title = header.findViewById(R.id.txtCardHeader);
+        ImageView icon = header.findViewById(R.id.ivCardHeader);
+        title.setText(getString(R.string.nav_profile));
+        Drawable imageDrawable = getResources().getDrawable(R.mipmap.ic_profile);
+        icon.setImageDrawable(imageDrawable);
+
         ArrayList<ProfileItem> itens = new ArrayList<>();
         ProfileItem item1 = new ProfileItem();
-        item1.icon = R.mipmap.ic_profile;
-        item1.titulo = getString(R.string.nav_profile);
+        item1.icon = R.mipmap.ic_profile_item_2;
+        item1.titulo = getString(R.string.profile_item1);
         ProfileItem item2 = new ProfileItem();
         item2.icon = R.mipmap.ic_logout;
-        item2.titulo = getString(R.string.nav_profile);
-
+        item2.titulo = getString(R.string.profile_item3);
+        ProfileItem item3 = new ProfileItem();
+        item3.icon = R.mipmap.ic_info;
+        item3.titulo = getString(R.string.profile_item4);
         itens.add(item1);
+        itens.add(item3);
+        itens.add(item2);
         ProfileItensAdapter adapter = new ProfileItensAdapter(getContext(),itens);
+        listView.setDividerHeight(50);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener((parent, view1, position, id) -> {
+            if(position == 0)
+            {
+                personal_data();
+            }
 
+        });
         return view;
+    }
+
+    public void logout(){
+
+    }
+
+    public void personal_data(){
+        Intent intent = new Intent(getActivity(), ProfileActivity.class); // Use getActivity() for context
+        startActivity(intent);
     }
 }

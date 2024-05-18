@@ -2,11 +2,14 @@ package com.numustec.voluntario.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.numustec.voluntario.R;
 import com.numustec.voluntario.entity.ProfileItem;
 import java.util.List;
@@ -45,8 +48,12 @@ public class ProfileItensAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_menu_profile, parent, false); // Layout do item da lista
         }
-        //ImageView icon = (ImageView)convertView.findViewById(R.id.ivIcon);
-        //TextView  name = (TextView)convertView.findViewById(R.id.txtName);
+        ProfileItem item = getItem(position);
+        ImageView icon = (ImageView)convertView.findViewById(R.id.ivIcon);
+        TextView name = (TextView)convertView.findViewById(R.id.txtName);
+        name.setText(item.titulo);
+        Drawable imageDrawable = context.getResources().getDrawable(item.icon);
+        icon.setImageDrawable(imageDrawable);
         return convertView;
     }
 }
