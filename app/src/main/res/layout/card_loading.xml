@@ -1,16 +1,18 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardLoading"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     app:cardCornerRadius="8dp">
 
-        <LinearLayout
+    <LinearLayout
         android:id="@+id/layoutLoading"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="horizontal">
 
         <ProgressBar
@@ -21,9 +23,11 @@
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textSize="15sp"
+            android:textAlignment="center"
             android:text="@string/txtLoading" />
     </LinearLayout>
 

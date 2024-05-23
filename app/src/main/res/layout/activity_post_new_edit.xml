@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activity.PostNewEditActivity">
+
+
+    <include android:id="@+id/inAppBar" layout="@layout/card_app_bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <include
+            android:id="@+id/inLoading"
+            layout="@layout/card_loading"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layoutPost"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                        <TextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:layout_margin="15dp"
+                            android:text="@string/inp_title" />
+                        <EditText
+                            android:id="@+id/etTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/input_border"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:layout_margin="15dp"
+                            android:inputType="text" />
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:text="@string/inp_date" />
+                        <EditText
+                            android:id="@+id/etDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/input_border"
+                            android:ems="10"
+                            android:hint="@string/place_date"
+                            android:layout_margin="15dp"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:editable="false"
+                            android:onClick="onDate"
+                             />
+
+                    <TextView
+                            android:id="@+id/tvDescript"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:text="@string/inp_descript" />
+                        <EditText
+                            android:id="@+id/etDescript"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/input_border"
+                            android:ems="10"
+                            android:layout_margin="15dp"
+                            android:inputType="textMultiLine"
+                            android:textColor="@color/black"
+                            android:minLines="8"
+                            android:textSize="25sp"
+                            android:hint="@string/place_descript" />
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/black"
+                            android:text="@string/inp_address" />
+                        <EditText
+                            android:id="@+id/etAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_border"
+                            android:ems="10"
+                            android:textColor="@color/black"
+                            android:layout_margin="15dp"
+                            android:textSize="25sp"
+                            android:hint="@string/place_address"
+                            android:inputType="textPostalAddress" />
+                        <Button
+                            android:id="@+id/btn_save"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="@string/btn_save"
+                            />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

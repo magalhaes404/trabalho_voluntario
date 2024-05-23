@@ -4,6 +4,8 @@
     <string name="inp_password">Senha</string>
     <string name="inp_name">Nome</string>
     <string name="btn_regiter">Cadastrar</string>
+    <string name="btn_save">Salvar</string>
+    <string name="btn_edit">Editar</string>
     <string name="btn_login">Login</string>
     <string name="txtLoading">Comunicando com o Servidor</string>
     <string name="placeholder_name">Digite aqui o seu nome</string>
@@ -20,7 +22,24 @@
     <string name="profile_item1">Dados Pessoais</string>
     <string name="profile_item3">Sair</string>
     <string name="profile_item4">Sobre</string>
+    <string name="search_date">Buscando Dados ...</string>
     <string name="menu">Menu</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date_empry">Nenhum Registro encontrado</string>
+    <string name="inp_title">Titulo</string>
+    <string name="inp_descript">Descrição</string>
+    <string name="inp_address">Local</string>
+    <string name="inp_date">Data do evento</string>
+    <string name="place_descript">Digite aqui a descrição </string>
+    <string name="place_address">Digite aqui o endereço</string>
+    <string name="place_date">Digite aqui a data e horas do evento caso tenha</string>
+    <string name="save_ok">Salvo com sucesso</string>
+    <string name="address">Local</string>
+    <string name="date">Data</string>
+    <string name="date_empty">Data não informada</string>
+    <string name="erro_title">Erro no titulo do evento</string>
+    <string name="erro_descript">Erro na descrição do evento</string>
+    <string name="erro_email">Email invalido</string>
+    <string name="erro_name">Nome invalido</string>
+    <string name="erro_pass">Senha%d muito curta</string>
+    <string name="erro_pass_invalid">Senhas são diferentes</string>
 </resources>

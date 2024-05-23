@@ -8,12 +8,13 @@
     android:background="@color/launcher_background"
     tools:context=".activity.ProfileActivity">
 
-    <include layout="@layout/card_header" />
+    <include android:id="@+id/inAppBar" layout="@layout/card_app_bar"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:layout_below="@+id/inAppBar"
         android:padding="50dp"
         app:cardBackgroundColor="@color/purple_500">
 
@@ -22,43 +23,66 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical">
-
             <TextView
-                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="35sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:text="@string/profile_item1"
                 android:layout_margin="10dp"
-                android:text="@string/inp_name" />
-
-            <EditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:inputType="text"
-                android:hint="@string/placeholder_name" />
-
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:text="@string/inp_email" />
-
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:textSize="20sp"
-                android:layout_margin="10dp"
-                android:hint="@string/placeholder_email"
-                android:inputType="textEmailAddress"
+                android:layout_marginBottom="15dp"
                 />
+            <include
+                android:id="@+id/inLoading"
+                layout="@layout/card_loading"
+                />
+
+            <LinearLayout
+                android:id="@+id/cardContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:text="@string/inp_name" />
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:inputType="text"
+                    android:hint="@string/placeholder_name" />
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:text="@string/inp_email" />
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="10dp"
+                    android:hint="@string/placeholder_email"
+                    android:inputType="textEmailAddress"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

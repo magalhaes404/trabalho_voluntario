@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.numustec.voluntario.MainActivity;
 import com.numustec.voluntario.R;
+import com.numustec.voluntario.activity.InfoActivity;
 import com.numustec.voluntario.activity.ProfileActivity;
 import com.numustec.voluntario.adapter.ProfileItensAdapter;
 import com.numustec.voluntario.entity.ProfileItem;
@@ -25,6 +29,7 @@ import java.util.ArrayList;
 public class Profile extends Fragment {
 
     ListView itens;
+    FirebaseAuth mauth;
     public Profile() {
         // Required empty public constructor
     }
@@ -42,6 +47,7 @@ public class Profile extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mauth = FirebaseAuth.getInstance();
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ListView listView = view.findViewById(R.id.lvProfileItens);
         // include header
@@ -73,13 +79,27 @@ public class Profile extends Fragment {
             {
                 personal_data();
             }
+            else if(position == 1){
+                info();
+            }
+            else if(position == 2){
+                logout();
+            }
 
         });
         return view;
     }
 
+    public void info(){
+        Intent intent = new Intent(getActivity(), InfoActivity.class);
+        startActivity(intent);
+    }
     public void logout(){
-
+        mauth.signOut();
+        if(mauth.getCurrentUser() == null){
+            Intent intent = new Intent(getActivity(),MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void personal_data(){

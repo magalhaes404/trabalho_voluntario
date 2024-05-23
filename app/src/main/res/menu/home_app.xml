@@ -12,11 +12,6 @@
             android:title="@string/nav_post" />
 
         <item
-            android:id="@+id/nav_canditate"
-            android:icon="@mipmap/ic_office"
-            android:title="@string/nav_canditate" />
-
-        <item
             android:id="@+id/nav_profile"
             android:icon="@mipmap/ic_profile"
             android:title="@string/nav_profile" />

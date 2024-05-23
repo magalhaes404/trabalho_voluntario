@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.numustec.voluntario.activity.HomeActivity;
 import com.numustec.voluntario.auth.AuthEmailPassword;
-import com.numustec.voluntario.post.PostListActivity;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;

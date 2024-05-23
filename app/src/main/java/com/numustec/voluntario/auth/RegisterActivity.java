@@ -12,9 +12,9 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.numustec.voluntario.HomeActivity;
+import com.numustec.voluntario.activity.HomeActivity;
 import com.numustec.voluntario.R;
-import com.numustec.voluntario.post.PostListActivity;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,12 +45,37 @@ public class RegisterActivity extends AppCompatActivity {
         layoutInput.setVisibility(View.VISIBLE);
     }
 
+    public boolean valid(){
+        String email = etEmail.getText().toString();
+        String pass1 = etPass1.getText().toString();
+        String pass2 = etPass2.getText().toString();
+        String name = etName.getText().toString();
+        if (email.length() > 8 && pass1.length() > 6 && pass2.length() > 6 && name.length() > 6) {
+            return true;
+        }
+        if(email.length() < 8){
+            etEmail.setError(getString(R.string.erro_email));
+        }
+        if(name.length() < 6){
+            etName.setError(getString(R.string.erro_name));
+        }
+        if(pass1.length() < 6 ){
+            etPass1.setError(String.format(getString(R.string.erro_pass),1));
+        }
+        if(pass2.length() < 6 ){
+            etEmail.setError(String.format(getString(R.string.erro_pass),2));
+        }
+        if(pass2.contentEquals(pass1.toString()) ){
+            etEmail.setError(getString(R.string.erro_pass_invalid));
+        }
+        return false;
+    }
     public void register(View view) {
         String email = etEmail.getText().toString();
         String pass1 = etPass1.getText().toString();
         String pass2 = etPass2.getText().toString();
         String name = etName.getText().toString();
-        if (email.length() > 5 && pass1.length() > 4 && pass2.length() > 4 && name.length() > 6) {
+        if (valid()) {
             if (pass2.contains(pass1)) {
                 layoutLoading.setVisibility(View.VISIBLE);
                 mauth.createUserWithEmailAndPassword(
@@ -83,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d(TAG,"Segundo else  pass1 => "+pass1+" pass2 => "+pass2);
             }
         }
+
         else{
             Log.d(TAG,"Primeiro else => {name:"+name+",email:"+email+",pass1:"+pass1+",pass2:"+pass2);
         }
