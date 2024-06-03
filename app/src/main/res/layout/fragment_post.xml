@@ -35,7 +35,8 @@
                 android:id="@+id/lvPost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/darker_gray"
+                android:dividerHeight="20dp"
+                android:background="@color/launcher_background"
                 tools:listitem="@layout/item_post" />
 
         </LinearLayout>

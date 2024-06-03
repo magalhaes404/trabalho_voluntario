@@ -8,14 +8,15 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+        app:cardBackgroundColor="@color/white"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="350dp"
             android:layout_margin="15dp"
             android:gravity="center"
+            android:background="@color/card_background"
             android:orientation="vertical">
 
             <ImageView
@@ -30,7 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Titulo"
-                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="25sp" />
 
             <TextView
@@ -38,6 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
                 android:text="Em meio ao frenético ritmo da metrópole, a noite se desenhava como um manto de veludo sobre a cidade. As luzes cintilantes das ruas e avenidas se entrelaçavam na vastidão urbana, tecendo uma constelação artificial que rivalizava com a beleza do céu estrelado. Lá de cima, do terraço do antigo prédio, a jovem observava o espetáculo com olhos fascinados.
 
     Seu nome era Gabriela, e ela era uma artista em busca de inspiração. As cores vibrantes da cidade, a sinfonia urbana composta por sons de carros, sirenes e vozes distantes, tudo a inspirava de uma maneira única. Ela pegou seu caderno de esboços e começou a traçar linhas e formas, capturando a essência daquela noite mágica.

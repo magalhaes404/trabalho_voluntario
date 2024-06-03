@@ -54,7 +54,7 @@
                         android:id="@+id/lvProfileItens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/darker_gray"
+                        android:background="@android:color/white"
                         tools:listitem="@layout/item_menu_profile" />
 
                 </LinearLayout>
