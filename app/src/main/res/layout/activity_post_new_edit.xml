@@ -32,18 +32,17 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
                         <TextView
-                            android:id="@+id/tvTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="25sp"
-                            android:layout_margin="15dp"
+                                    android:id="@+id/tvTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black"
+                                    android:textSize="25sp"
+                                    android:layout_margin="15dp"
                             android:text="@string/inp_title" />
                         <EditText
                             android:id="@+id/etTitle"
@@ -55,28 +54,45 @@
                             android:layout_margin="15dp"
                             android:inputType="text" />
                         <TextView
-                            android:id="@+id/tvDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="15dp"
-                            android:textSize="25sp"
-                            android:textColor="@color/black"
-                            android:text="@string/inp_date" />
+                        android:id="@+id/tvDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:text="@string/inp_date" />
+                        <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <EditText
                             android:id="@+id/etDate"
+                            android:layout_width="161dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/input_border"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="00/00/0000"
+                            android:onClick="onDate"
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+
+                        <EditText
+                            android:id="@+id/etTime"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/input_border"
-                            android:ems="10"
-                            android:hint="@string/place_date"
                             android:layout_margin="15dp"
-                            android:textColor="@color/black"
-                            android:textSize="25sp"
+                            android:background="@drawable/input_border"
                             android:editable="false"
-                            android:onClick="onDate"
-                             />
-
-                    <TextView
+                            android:ems="10"
+                            android:hint="00:00"
+                            android:onClick="onTime"
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+                    </LinearLayout>
+                        <TextView
                             android:id="@+id/tvDescript"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -124,6 +140,6 @@
                             />
                 </LinearLayout>
             </ScrollView>
-        </LinearLayout>
     </LinearLayout>
+</LinearLayout>
 </LinearLayout>

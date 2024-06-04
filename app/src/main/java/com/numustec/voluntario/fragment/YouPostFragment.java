@@ -76,6 +76,7 @@ public class YouPostFragment extends Fragment {
         icon.setImageDrawable(imageDrawable);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
             if(post.get(position).title != ""){
+                Log.e("YouPostFragment","Activity Date => "+post.get(position).datetime);
                 Intent intent = new Intent(getActivity(), PostDetailsActivity.class);
                 intent.putExtra("title",post.get(position).title);
                 intent.putExtra("descript",post.get(position).descript);
@@ -131,6 +132,12 @@ public class YouPostFragment extends Fragment {
                                 String address = datas.get(i).getString("local");
                                 String id = datas.get(i).getReference().getId();
                                 String author = datas.get(i).getString("uuid_login");
+                                Log.e("YouPostFragment","Dados => "+datas.get(i).getData().toString());
+                                if(datas.get(i).getData().toString().contains("datetime"))
+                                {
+                                    e.datetime = datas.get(i).getTimestamp("datetime").getSeconds();
+                                    Log.e("YouPostFragment ","Date => "+e.datetime);
+                                }
                                 e.id = id;
                                 e.title = title;
                                 e.descript = descript;

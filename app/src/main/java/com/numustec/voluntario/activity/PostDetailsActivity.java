@@ -46,18 +46,24 @@ public class PostDetailsActivity extends AppCompatActivity {
         post.descript = intent.getStringExtra("descript");
         post.address = intent.getStringExtra("address");
         post.author = intent.getStringExtra("author");
-        post.datetime = intent.getStringExtra("date");
         post.id = intent.getStringExtra("id");
+        post.datetime = intent.getLongExtra("date",0);
+        Log.e("POSTDETAILS","DATE => "+post.datetime);
+        /*if(date1 != null && date1.length() > 0){
+            post.datetime = Long.parseLong(date1);*/
+            date.setText((post.datetime == 0 ? getString(R.string.date_empty): post.getDate()));
+        /*}*/
         title.setText(post.title);
         descript.setText(post.descript);
         address.setText(getString(R.string.address)+": "+post.address);
-        date.setText((post.datetime == null ? getString(R.string.date_empty): post.datetime));
         edit.setOnClickListener(v -> {
             Intent it = new Intent(this,PostNewEditActivity.class);
             it.putExtra("title",post.title);
             it.putExtra("descript",post.descript);
             it.putExtra("address",post.address);
             it.putExtra("author",post.author);
+            it.putExtra("datetime",post.getDate());
+            it.putExtra("date",post.datetime);
             it.putExtra("id",post.id);
             startActivity(it);
         });

@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class PostNewEditActivity extends AppCompatActivity {
     CardView loading;
-    EditText title,descript,address,date;
+    EditText title,descript,address,date,time;
     FirebaseFirestore db;
     FirebaseAuth mauth;
     LinearLayout post;
@@ -53,6 +53,7 @@ public class PostNewEditActivity extends AppCompatActivity {
         descript = (EditText)findViewById(R.id.etDescript);
         address = (EditText)findViewById(R.id.etAddress);
         date = (EditText)findViewById(R.id.etDate);
+        time = (EditText)findViewById(R.id.etTime);
         button = (Button)findViewById(R.id.btn_save);
         item = new Post();
         if(intent.hasExtra("title")){
@@ -61,10 +62,16 @@ public class PostNewEditActivity extends AppCompatActivity {
             item.address = intent.getStringExtra("address");
             item.author = intent.getStringExtra("author");
             item.id = intent.getStringExtra("id");
+            item.datetime = intent.getLongExtra("date",0);
             title.setText(intent.getStringExtra("title"));
             descript.setText(intent.getStringExtra("descript"));
             address.setText(intent.getStringExtra("address"));
-            date.setText(intent.getStringExtra("date"));
+            String date1 = intent.getStringExtra("datetime");
+            Log.e("PostNew","Date => "+date1);
+            if(date1 != null ){
+                date.setText(date1.split(" ")[0]);
+                time.setText(date1.split(" ")[1]);
+            }
             button.setOnClickListener(v -> {
                 edit(v);
             });
@@ -122,6 +129,7 @@ public class PostNewEditActivity extends AppCompatActivity {
             post.setVisibility(View.VISIBLE);
         }
     }
+
     public void save(View view){
         if(valid_erro()){
             setLoading(true);
@@ -169,7 +177,7 @@ public class PostNewEditActivity extends AppCompatActivity {
                 String title    = this.title.getText().toString();
                 String descript = this.descript.getText().toString();
                 String address  = this.address.getText().toString();
-                String date     = this.date.getText().toString();
+                String date     = this.date.getText().toString()+" "+this.time.getText();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 Date parsedDate  = dateFormat.parse(date);
                 Timestamp timestamp = new Timestamp(parsedDate);
@@ -188,33 +196,34 @@ public class PostNewEditActivity extends AppCompatActivity {
 
     public void onDate(View v){
         Calendar c = Calendar.getInstance();
+        c.setTime(item.getDateI());
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                String formattedDate = String.format("%02d/%02d/%d", day,month + 1, year);
+                date.setText(formattedDate);
+            }
+        }, year, month, day);
+        datePickerDialog.show();
+    }
+
+    public void onTime(View v){
+        Calendar c = Calendar.getInstance();
+        c.setTime(item.getDateI());
         int hour = c.get(Calendar.HOUR);
         int minute = c.get(Calendar.MINUTE);
         TimePickerDialog timerPickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 String formattedDate = String.format("%02d:%02d",hourOfDay,minute);
-                String text = date.getText().toString();
-                if(text.length() == 10){
-                    date.setText(text+" "+formattedDate);
-                }
+                String text = time.getText().toString();
+                time.setText(text+" "+formattedDate);
             }
         },hour,minute,true);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
-                String formattedDate = String.format("%02d/%02d/%d", day,month + 1, year);
-                date.setText(formattedDate);
-                // Convert to Timestamp
-                Calendar selectedDate = Calendar.getInstance();
-                selectedDate.set(year,month,day);
-                timestamp = new Timestamp(selectedDate.getTime());
-                timerPickerDialog.show();
-            }
-        }, year, month, day);
-        datePickerDialog.show();
+        timerPickerDialog.show();
     }
+
 }

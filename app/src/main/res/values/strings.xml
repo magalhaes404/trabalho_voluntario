@@ -29,9 +29,11 @@
     <string name="inp_descript">Descrição</string>
     <string name="inp_address">Local</string>
     <string name="inp_date">Data do evento</string>
+    <string name="inp_time">Hora do evento</string>
     <string name="place_descript">Digite aqui a descrição </string>
     <string name="place_address">Digite aqui o endereço</string>
-    <string name="place_date">Digite aqui a data e horas do evento caso tenha</string>
+    <string name="place_date">Digite aqui a data</string>
+    <string name="place_time">Digite aqui a horas</string>
     <string name="save_ok">Salvo com sucesso</string>
     <string name="address">Local</string>
     <string name="date">Data</string>
