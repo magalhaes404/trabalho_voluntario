@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.numustec.voluntario.R;
+import com.numustec.voluntario.activity.HomeActivity;
 import com.numustec.voluntario.post.PostListActivity;
 
 public class AuthEmailPassword extends AppCompatActivity {
@@ -41,12 +43,15 @@ public class AuthEmailPassword extends AppCompatActivity {
         if(etEmail.getText().toString().length() > 5 && etPass.getText().toString().length() > 4){
             layoutLoading.setVisibility(View.VISIBLE);
             layoutInput.setVisibility(View.GONE);
-            mauth.signInWithEmailAndPassword(etEmail.toString(),etPass.toString())
+            String email = etEmail.getText().toString();
+            String pass = etPass.getText().toString();
+            Log.e("AUTHEMAILPASSWORD","ok1 email => "+email+" Senha => "+pass);
+            mauth.signInWithEmailAndPassword(email,pass)
                     .addOnFailureListener(e -> {
                         Toast.makeText(getBaseContext(),e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
                     })
                     .addOnSuccessListener(authResult -> {
-                        Intent intent = new Intent(this, PostListActivity.class);
+                        Intent intent = new Intent(this, HomeActivity.class);
                         startActivity(intent);
                     })
                     .addOnCompleteListener(task -> {
